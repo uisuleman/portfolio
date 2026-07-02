@@ -1,0 +1,287 @@
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("assets/fonts/PlusJakartaSans-800.woff2") format("woff2");
+  font-weight: 700 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --text-soft: rgba(0, 0, 0, 0.8);
+  --radius: 12px;
+  --page-pad: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.2px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 28% 1fr;
+}
+
+/* ---------- Left panel ---------- */
+
+.panel {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+.profile-name {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.profile-handle {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-soft);
+}
+
+.intro {
+  margin-top: 64px;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  max-width: 20ch;
+}
+
+.lede {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text-soft);
+  max-width: 42ch;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  border-radius: 9999px;
+  padding: 13px 24px;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--text);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: rgb(38, 38, 38);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--text);
+}
+
+.btn-secondary:hover {
+  background: var(--text);
+  color: #fff;
+}
+
+.clients {
+  margin-top: auto;
+  padding-top: 48px;
+}
+
+.clients-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.clients-cols {
+  display: flex;
+}
+
+.clients-cols ul:first-child {
+  width: 172px;
+  flex-shrink: 0;
+}
+
+.clients-cols ul {
+  list-style: none;
+}
+
+.clients-cols li {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--text-soft);
+}
+
+/* ---------- Gallery ---------- */
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: var(--page-pad) var(--page-pad) var(--page-pad) 0;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.gallery img.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1439px) {
+  .layout {
+    grid-template-columns: 33% 1fr;
+  }
+}
+
+@media (max-width: 1199px) {
+  .layout {
+    grid-template-columns: 35% 1fr;
+  }
+}
+
+@media (max-width: 809px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    position: static;
+    height: auto;
+    padding: 32px 16px;
+  }
+
+  .intro {
+    margin-top: 48px;
+  }
+
+  h1 {
+    font-size: 32px;
+    max-width: none;
+  }
+
+  .lede {
+    max-width: none;
+  }
+
+  .clients {
+    margin-top: 56px;
+    padding-top: 0;
+  }
+
+  .clients-cols {
+    gap: 0;
+  }
+
+  .clients-cols ul {
+    flex: 1;
+  }
+
+  .gallery {
+    padding: 0 16px 16px;
+    gap: 16px;
+  }
+}
