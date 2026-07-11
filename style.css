@@ -106,8 +106,38 @@ body {
   color: var(--text-soft);
 }
 
+.framer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 16px;
+  padding: 6px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--text);
+  text-decoration: none;
+  width: fit-content;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.framer-badge:hover {
+  border-color: rgba(0, 0, 0, 0.28);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.framer-badge-logo {
+  flex-shrink: 0;
+}
+
+.framer-badge-logo path {
+  fill: var(--text);
+}
+
 .intro {
-  margin-top: 64px;
+  margin-top: 40px;
 }
 
 h1 {
@@ -219,12 +249,17 @@ h1 {
   object-fit: cover;
   border-radius: var(--radius);
   display: block;
+}
+
+/* Fade-in is a progressive enhancement: only hide images when JS is
+   active, so if the script ever fails to run the images still show. */
+.js .gallery img {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.gallery img.visible {
+.js .gallery img.visible {
   opacity: 1;
   transform: none;
 }
